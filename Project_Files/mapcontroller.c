@@ -22,7 +22,7 @@ char	**getnewmap(t_data *data)
 	j = 0;
 	while (data->map[i])
 		i++;
-	newmap = malloc(sizeof(char *) * i);
+	newmap = malloc(sizeof(char *) * (i + 1));
 	i = 0;
 	while (data->map[i])
 	{
@@ -30,6 +30,7 @@ char	**getnewmap(t_data *data)
 			newmap[j++] = data->map[i];
 		i++;
 	}
+	newmap[j] = NULL;
 	return (newmap);
 }
 
@@ -90,8 +91,16 @@ void	mapleakcontrol(char **map)
 	j = 0;
 	while (map[i])
 		i++;
-	maplen = i;
+	maplen = i - 1;
 	i = 0;
+
+	while (map[i])
+	{
+		printf("%s\n", map[i]);
+		i++;
+	}
+	i = 0;
+
 	while (map[i])
 	{
 		while (map[i][j])
@@ -114,7 +123,7 @@ void	mapcontroller(t_data *data)
 	int		i;
 
 	i = 0;
-	newmap = getnewmap(data);
+	newmap = removespace(getnewmap(data), 0);
 	while (newmap[i])
 		i++;
 	lettercontrol(newmap);

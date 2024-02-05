@@ -31,6 +31,7 @@ void	charactercontrol(t_data *data, char **map, int len)
 				if (i == 0 || i == len)
 					errormessage("Wrong map!", 21);
 				else if (isendorstart(map[i], j))
+					errormessage("Wrong map!", 22);
 				othercontrol(map, i, j, map[i][j]);
 			}
 			j++;

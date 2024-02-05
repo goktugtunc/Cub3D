@@ -37,6 +37,58 @@ int	isendorstart(char *line, int place)
 				j++;
 			}
 		}
+		j++;
 	}
 	return (1);
+}
+
+void	freedoublepointer(char **db)
+{
+	int	i;
+
+	i = 0;
+	while (db[i])
+		free(db[i++]);
+	free(db);
+}
+
+int		doublepointersize(char **db)
+{
+	int	i;
+
+	i = 0;
+	while (db[i])
+	{
+		i++;
+	}
+	return (i);
+}
+
+char	**removespace(char **map, int newmapi)
+{
+	char	**newmap;
+	int		flag;
+	int		i;
+	int		j;
+
+	newmap = malloc(sizeof(char *) * (doublepointersize(map) + 1));
+	i = -1;
+	j = -1;
+	while (map[++i])
+	{
+		flag = 0;
+		while (map[i][++j])
+		{
+			if (map[i][j] == '0' || map[i][j] == '1'
+				|| map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W')
+				flag = 1;
+		}
+		if (flag == 1)
+			newmap[newmapi++] = ft_strdup(map[i]);
+		j = -1;
+	}
+	newmap[newmapi] = NULL;
+	freedoublepointer(map);
+	return (newmap);
 }

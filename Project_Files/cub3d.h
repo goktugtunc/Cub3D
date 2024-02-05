@@ -44,5 +44,6 @@ int		isendorstart(char *line, int place);
 void	mapcontroller(t_data *data);
 void	othercontrol(char **map, int i, int j, int stat);
 void	charactercontrol(t_data *data, char **map, int len);
+char	**removespace(char **map, int newmapi);
 
 #endif

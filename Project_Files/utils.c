@@ -52,7 +52,7 @@ void	freedoublepointer(char **db)
 	free(db);
 }
 
-int		doublepointersize(char **db)
+int	doublepointersize(char **db)
 {
 	int	i;
 

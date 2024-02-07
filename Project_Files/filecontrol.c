@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 22:19:05 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/04 03:25:42 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/07 15:38:14 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,10 +45,10 @@ void	filecontentcontrol(t_data *data)
 	char	*f;
 	char	*c;
 
-	data->no = findpath(data->map, "NO ", 0, -1);
-	data->so = findpath(data->map, "SO ", 0, -1);
-	data->we = findpath(data->map, "WE ", 0, -1);
-	data->ea = findpath(data->map, "EA ", 0, -1);
+	data->nofile = findpath(data->map, "NO ", 0, -1);
+	data->sofile = findpath(data->map, "SO ", 0, -1);
+	data->wefile = findpath(data->map, "WE ", 0, -1);
+	data->eafile = findpath(data->map, "EA ", 0, -1);
 	f = findpath(data->map, "F", 0, -1);
 	c = findpath(data->map, "C", 0, -1);
 	forcisdigit(f);
@@ -57,10 +57,10 @@ void	filecontentcontrol(t_data *data)
 	data->c = convertint(c);
 	maxintcontrol(data->f);
 	maxintcontrol(data->c);
-	texturecontrol(data->so);
-	texturecontrol(data->no);
-	texturecontrol(data->we);
-	texturecontrol(data->ea);
+	texturecontrol(data->sofile);
+	texturecontrol(data->nofile);
+	texturecontrol(data->wefile);
+	texturecontrol(data->eafile);
 }
 
 char	*getfile(char *filename)
@@ -80,7 +80,7 @@ char	*getfile(char *filename)
 		if (temp != NULL)
 		{
 			map = ft_strjoin(map, temp);
-			free(temp);	
+			free(temp);
 		}
 	}
 	return (map);
@@ -88,13 +88,25 @@ char	*getfile(char *filename)
 
 void	othercontrol(char **map, int i, int j, int stat)
 {
-	if (map[i][j] == stat && map[i + 1][j] != '1' && map[i + 1][j] != '0' && map[i + 1][j] != 'N' && map[i + 1][j] != 'S' && map[i + 1][j] != 'W' && map[i + 1][j] != 'E')
+	if (map[i][j] == stat && map[i + 1][j] != '1'
+		&& map[i + 1][j] != '0' && map[i + 1][j] != 'N'
+		&& map[i + 1][j] != 'S' && map[i + 1][j] != 'W'
+		&& map[i + 1][j] != 'E')
 		errormessage("Wrong map!", 14);
-	else if (map[i][j] == stat && map[i - 1][j] != '1' && map[i - 1][j] != '0' && map[i - 1][j] != 'N' && map[i - 1][j] != 'S' && map[i - 1][j] != 'W' && map[i - 1][j] != 'E')
+	else if (map[i][j] == stat && map[i - 1][j] != '1'
+		&& map[i - 1][j] != '0' && map[i - 1][j] != 'N'
+		&& map[i - 1][j] != 'S' && map[i - 1][j] != 'W'
+		&& map[i - 1][j] != 'E')
 		errormessage("Wrong map!", 15);
-	else if (map[i][j] == stat && map[i][j + 1] != '1' && map[i][j + 1] != '0' && map[i][j + 1] != 'N' && map[i][j + 1] != 'S' && map[i][j + 1] != 'W' && map[i][j + 1] != 'E')
+	else if (map[i][j] == stat && map[i][j + 1] != '1'
+		&& map[i][j + 1] != '0' && map[i][j + 1] != 'N'
+		&& map[i][j + 1] != 'S' && map[i][j + 1] != 'W'
+		&& map[i][j + 1] != 'E')
 		errormessage("Wrong map!", 16);
-	else if (map[i][j] == stat && map[i][j - 1] != '1' && map[i][j - 1] != '0' && map[i][j - 1] != 'N' && map[i][j - 1] != 'S' && map[i][j - 1] != 'W' && map[i][j - 1] != 'E')
+	else if (map[i][j] == stat && map[i][j - 1] != '1'
+		&& map[i][j - 1] != '0' && map[i][j - 1] != 'N'
+		&& map[i][j - 1] != 'S' && map[i][j - 1] != 'W'
+		&& map[i][j - 1] != 'E')
 		errormessage("Wrong map!", 17);
 }
 

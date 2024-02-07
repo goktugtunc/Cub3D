@@ -1,23 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ifpresswasd.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 21:54:52 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/07 15:36:14 by gotunc           ###   ########.fr       */
+/*   Created: 2024/02/07 11:41:50 by gotunc            #+#    #+#             */
+/*   Updated: 2024/02/07 11:51:06 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	ifpressw(t_data *data)
 {
-	t_data	data;
+	(void)data;
 
-	if (argc != 2)
-		errormessage("Wrong Arguments!", 1);
-	filecontrol(argv[1], &data);
-	preparemlx(&data);
+	// ileri gidecek
+}
+
+void	ifpressa(t_data *data)
+{
+	(void)data;
+
+	// sola gidecek
+}
+
+void	ifpresss(t_data *data)
+{
+	(void)data;
+
+	// geri gidecek
+}
+
+void	ifpressd(t_data *data)
+{
+	(void)data;
+
+	// sağa gidecek
 }

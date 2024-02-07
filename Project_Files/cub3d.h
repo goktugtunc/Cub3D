@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:55:06 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/04 03:29:29 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/07 16:44:18 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,19 +19,26 @@
 # include <fcntl.h>
 # include "libft/libft.h"
 # include "get_next_line/get_next_line_bonus.h"
+# include "mlx/mlx.h"
 
-typedef struct	s_data
+typedef struct s_data
 {
 	char	**map;
-	char	*no;
-	char	*so;
-	char	*we;
-	char	*ea;
+	char	*nofile;
+	void	*no;
+	char	*sofile;
+	void	*so;
+	char	*wefile;
+	void	*we;
+	char	*eafile;
+	void	*ea;
 	int		*f;
 	int		*c;
 	int		charx;
 	int		chary;
 	int		chardirection;
+	void	*mlx;
+	void	*mlxwin;
 }	t_data;
 
 void	errormessage(char *message, int errornumber);
@@ -45,5 +52,18 @@ void	mapcontroller(t_data *data);
 void	othercontrol(char **map, int i, int j, int stat);
 void	charactercontrol(t_data *data, char **map, int len);
 char	**removespace(char **map, int newmapi);
+void	getlatestmap(t_data *data, char **newmap);
+void	freedoublepointer(char **db);
+void	preparemlx(t_data *data);
+int		ifpressesc(int sig, t_data *data);
+int		ifpressfuncs(int sig, t_data *data);
+void	ifpressw(t_data *data);
+void	ifpressa(t_data *data);
+void	ifpresss(t_data *data);
+void	ifpressd(t_data *data);
+void	ifpresskeyup(t_data *data);
+void	ifpresskeyleft(t_data *data);
+void	ifpresskeydown(t_data *data);
+void	ifpresskeyright(t_data *data);
 
 #endif

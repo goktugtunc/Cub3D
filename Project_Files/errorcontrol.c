@@ -42,10 +42,11 @@ int	*convertint(char *convert)
 	i = 0;
 	while (temp[i])
 	{
-		ret[i] = ft_atoi(temp[i]);	
+		ret[i] = ft_atoi(temp[i]);
 		free(temp[i]);
 		i++;
 	}
+	free(temp);
 	free(convert);
 	return (ret);
 }

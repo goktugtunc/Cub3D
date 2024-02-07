@@ -26,8 +26,13 @@ char	**getnewmap(t_data *data)
 	i = 0;
 	while (data->map[i])
 	{
-		if (ft_strncmp(data->map[i], "SO ", 3) && ft_strncmp(data->map[i], "NO ", 3) && ft_strncmp(data->map[i], "WE ", 3) && ft_strncmp(data->map[i], "EA ", 3) && ft_strncmp(data->map[i], "F ", 2) && ft_strncmp(data->map[i], "C ", 2))
-			newmap[j++] = data->map[i];
+		if (ft_strncmp(data->map[i], "SO ", 3)
+			&& ft_strncmp(data->map[i], "NO ", 3)
+			&& ft_strncmp(data->map[i], "WE ", 3)
+			&& ft_strncmp(data->map[i], "EA ", 3)
+			&& ft_strncmp(data->map[i], "F ", 2)
+			&& ft_strncmp(data->map[i], "C ", 2))
+			newmap[j++] = ft_strdup(data->map[i]);
 		i++;
 	}
 	newmap[j] = NULL;
@@ -47,9 +52,11 @@ void	directioncontrol(char **map)
 	{
 		while (map[i][j])
 		{
-			if (flag == 1 && (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W'))
+			if (flag == 1 && (map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W'))
 				errormessage("Too many direction letter!", 10);
-			if (flag == 0 && (map[i][j] == 'N' || map[i][j] == 'S' || map[i][j] == 'E' || map[i][j] == 'W'))
+			if (flag == 0 && (map[i][j] == 'N' || map[i][j] == 'S'
+				|| map[i][j] == 'E' || map[i][j] == 'W'))
 				flag = 1;
 			j++;
 		}
@@ -71,7 +78,10 @@ void	lettercontrol(char **newmap)
 	{
 		while (newmap[i][j])
 		{
-			if (newmap[i][j] != '1' && newmap[i][j] != '0' && newmap[i][j] != 'N' && newmap[i][j] != 'S' && newmap[i][j] != 'E' && newmap[i][j] != 'W' && newmap[i][j] != ' ')
+			if (newmap[i][j] != '1' && newmap[i][j] != '0'
+				&& newmap[i][j] != 'N' && newmap[i][j] != 'S'
+				&& newmap[i][j] != 'E' && newmap[i][j] != 'W'
+				&& newmap[i][j] != ' ')
 				errormessage("Wrong letter in map file!", 9);
 			j++;
 		}
@@ -93,14 +103,6 @@ void	mapleakcontrol(char **map)
 		i++;
 	maplen = i - 1;
 	i = 0;
-
-	while (map[i])
-	{
-		printf("%s\n", map[i]);
-		i++;
-	}
-	i = 0;
-
 	while (map[i])
 	{
 		while (map[i][j])
@@ -117,7 +119,7 @@ void	mapleakcontrol(char **map)
 	}
 }
 
-void	mapcontroller(t_data *data)	
+void	mapcontroller(t_data *data)
 {
 	char	**newmap;
 	int		i;
@@ -129,4 +131,5 @@ void	mapcontroller(t_data *data)
 	lettercontrol(newmap);
 	mapleakcontrol(newmap);
 	charactercontrol(data, newmap, i - 1);
+	getlatestmap(data, newmap);
 }

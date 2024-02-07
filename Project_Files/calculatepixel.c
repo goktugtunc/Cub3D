@@ -1,23 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   calculatepixel.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/03 21:54:52 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/07 15:36:14 by gotunc           ###   ########.fr       */
+/*   Created: 2024/02/07 15:29:15 by gotunc            #+#    #+#             */
+/*   Updated: 2024/02/07 15:29:38 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-int	main(int argc, char **argv)
+void	calculatepixel(t_data *data)
 {
-	t_data	data;
-
-	if (argc != 2)
-		errormessage("Wrong Arguments!", 1);
-	filecontrol(argv[1], &data);
-	preparemlx(&data);
 }

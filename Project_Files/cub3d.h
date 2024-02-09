@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:55:06 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/07 16:44:18 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:25:07 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,13 @@ typedef struct s_data
 	void	*ea;
 	int		*f;
 	int		*c;
-	int		charx;
-	int		chary;
+	int		charxpos;
+	int		charypos;
 	int		chardirection;
 	void	*mlx;
 	void	*mlxwin;
+	int		charx;
+	int		chary;
 }	t_data;
 
 void	errormessage(char *message, int errornumber);

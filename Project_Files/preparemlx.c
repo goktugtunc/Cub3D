@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 01:50:00 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/07 18:10:42 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/09 10:40:41 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,13 +17,13 @@ void	haritakoy(t_data *data)
 	void	*one;
 	void	*zero;
 	void	*character;
-
 	int x = 64;
+	int	i = 0;
+	int	j = 0;
+
 	one = mlx_xpm_file_to_image(data->mlx, "one.xpm", &x, &x);
 	zero = mlx_xpm_file_to_image(data->mlx, "zero.xpm", &x, &x);
 	character = mlx_xpm_file_to_image(data->mlx, "character.xpm", &x, &x);
-	int	i = 0;
-	int	j = 0;
 	while (data->map[i])
 	{
 		j = 0;

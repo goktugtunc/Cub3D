@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 01:50:00 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/09 10:40:41 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/12 03:43:46 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@ void	haritakoy(t_data *data)
 	int	i = 0;
 	int	j = 0;
 
-	one = mlx_xpm_file_to_image(data->mlx, "one.xpm", &x, &x);
-	zero = mlx_xpm_file_to_image(data->mlx, "zero.xpm", &x, &x);
-	character = mlx_xpm_file_to_image(data->mlx, "character.xpm", &x, &x);
+	one = mlx_xpm_file_to_image(data->mlx, "wall1.xpm", &x, &x);
+	zero = mlx_xpm_file_to_image(data->mlx, "wall2.xpm", &x, &x);
+	character = mlx_xpm_file_to_image(data->mlx, "wall3.xpm", &x, &x);
 	while (data->map[i])
 	{
 		j = 0;
@@ -43,7 +43,8 @@ void	haritakoy(t_data *data)
 
 void	getmlxarguments(t_data *data)
 {
-	int	size;
+	int		size;
+	// char	*color;
 
 	size = 64;
 	if (open(data->sofile, O_RDONLY) == -1 || open(data->nofile, O_RDONLY) == -1
@@ -59,6 +60,8 @@ void	getmlxarguments(t_data *data)
 	data->no = mlx_xpm_file_to_image(data->mlx, data->nofile, &size, &size);
 	data->we = mlx_xpm_file_to_image(data->mlx, data->wefile, &size, &size);
 	data->ea = mlx_xpm_file_to_image(data->mlx, data->eafile, &size, &size);
+	data->fcolor = getcolortohex(data->f);
+	data->ccolor = getcolortohex(data->c);
 }
 
 void	preparemlx(t_data *data)
@@ -67,7 +70,14 @@ void	preparemlx(t_data *data)
 	data->mlxwin = mlx_new_window(data->mlx,
 			2560, 1400, "CUB3D -> gotunc - amonem");
 	getmlxarguments(data);
-	haritakoy(data);
+	mlx_pixel_put(data->mlx, data->mlxwin, 128, 64, data->fcolor);
+	mlx_pixel_put(data->mlx, data->mlxwin, 64, 64, data->ccolor);
+	data->fandcimageptr = mlx_new_image(data->mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
+	data->fandcimage = mlx_get_data_addr(data->fandcimageptr, 32, 64, 1);
+	putfloorandceiling(data);
+	write(1, "1", 1);
+	mlx_put_image_to_window(data->mlx, data->mlxwin, data->fandcimage, 0, 0);
+	// haritakoy(data);
 	mlx_hook(data->mlxwin, 2, 0, ifpressfuncs, data);
 	mlx_hook(data->mlxwin, 17, 0, ifpressesc, data);
 	mlx_loop(data->mlx);

@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/04 03:15:06 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/09 10:41:22 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 01:14:02 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	charactercontrol(t_data *data, char **map, int len)
 			if (map[i][j] == 'N' || map[i][j] == 'W'
 				|| map[i][j] == 'E' || map[i][j] == 'S')
 			{
-				data->charx = i * 64 + 32;
 				data->chary = j * 64 + 32;
+				data->charx = i * 64 + 32;
 				data->chardirection = map[i][j];
 				if (i == 0 || i == len)
 					errormessage("Wrong map!", 21);

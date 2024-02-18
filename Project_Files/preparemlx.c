@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 01:50:00 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/12 03:43:46 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 01:26:25 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,12 +72,13 @@ void	preparemlx(t_data *data)
 	getmlxarguments(data);
 	mlx_pixel_put(data->mlx, data->mlxwin, 128, 64, data->fcolor);
 	mlx_pixel_put(data->mlx, data->mlxwin, 64, 64, data->ccolor);
-	data->fandcimageptr = mlx_new_image(data->mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
-	data->fandcimage = mlx_get_data_addr(data->fandcimageptr, 32, 64, 1);
-	putfloorandceiling(data);
+	data->charvisionangle = 90;
+	// data->fandcimageptr = mlx_new_image(data->mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
+	// data->fandcimage = mlx_get_data_addr(data->fandcimageptr, 32, 64, 1);
+	// putfloorandceiling(data);
 	write(1, "1", 1);
-	mlx_put_image_to_window(data->mlx, data->mlxwin, data->fandcimage, 0, 0);
-	// haritakoy(data);
+	// mlx_put_image_to_window(data->mlx, data->mlxwin, data->fandcimage, 0, 0);
+	haritakoy(data);
 	mlx_hook(data->mlxwin, 2, 0, ifpressfuncs, data);
 	mlx_hook(data->mlxwin, 17, 0, ifpressesc, data);
 	mlx_loop(data->mlx);

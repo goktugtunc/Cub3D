@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:41:50 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/09 10:46:54 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 02:07:00 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,34 +16,72 @@ void	ifpressw(t_data *data)
 {
 	int	ipos;
 	int	jpos;
+	int	temp;
 
-	ipos = (data->charx + 4) / 64;
-	jpos = (data->chary + 4) / 64;
+	temp = data->charx;
+	ipos = (data->charx - (4 * sin(data->charvisionangle * M_PI / 180))) / 64;
+	jpos = data->chary / 64;
+	printf("ipos = %d, jpos = %d\n", ipos, jpos);
 	if (data->map[ipos][jpos] != '1')
 	{
-		data->chary += 4;
+		data->charx -= (4 * sin(data->charvisionangle * M_PI / 180));
+		printf("charx: %d, chary: %d\n", data->charx, data->chary);
 	}
-	printf("posx = %d, posy = %d\n", data->charx, data->chary);
+	ipos = temp / 64;
+	jpos = (data->chary + (4 * cos(data->charvisionangle * M_PI / 180))) / 64;
+	if (data->map[ipos][jpos] != '1')
+	{
+		data->chary += (4 * cos(data->charvisionangle * M_PI / 180));
+		printf("charx: %d, chary: %d\n", data->charx, data->chary);
+	}
+	mlx_pixel_put(data->mlx, data->mlxwin, data->chary, data->charx, data->ccolor);
 	// ileri gidecek
 }
 
 void	ifpressa(t_data *data)
 {
-	(void)data;
+	int	ipos;
+	int	jpos;
 
+	ipos = data->charx / 64;
+	jpos = (data->chary - 4) / 64;
+	printf("ipos = %d, jpos = %d\n", ipos, jpos);
+	if (data->map[ipos][jpos] != '1')
+	{
+		data->chary -= 4;
+		printf("charx: %d, chary: %d\n", data->charx, data->chary);
+	}
 	// sola gidecek
 }
 
 void	ifpresss(t_data *data)
 {
-	(void)data;
+	int	ipos;
+	int	jpos;
 
+	ipos = (data->charx + 4) / 64;
+	jpos = data->chary / 64;
+	printf("ipos = %d, jpos = %d\n", ipos, jpos);
+	if (data->map[ipos][jpos] != '1')
+	{
+		data->charx += 4;
+		printf("charx: %d, chary: %d\n", data->charx, data->chary);
+	}
 	// geri gidecek
 }
 
 void	ifpressd(t_data *data)
 {
-	(void)data;
+	int	ipos;
+	int	jpos;
 
+	ipos = data->charx / 64;
+	jpos = (data->chary + 4) / 64;
+	printf("ipos = %d, jpos = %d\n", ipos, jpos);
+	if (data->map[ipos][jpos] != '1')
+	{
+		data->chary += 4;
+		printf("charx: %d, chary: %d\n", data->charx, data->chary);
+	}
 	// sağa gidecek
 }

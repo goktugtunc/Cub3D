@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:11:28 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/12 02:49:24 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 01:34:40 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ int	ifpressfuncs(int sig, t_data *data)
 		ifpresskeyleft(data);
 	else if (sig == 0x7C)
 		ifpresskeyright(data);
-	else if (sig == 0x7D)
-		ifpresskeydown(data);
-	else if (sig == 0x7E)
-		ifpresskeyup(data);
 	else if (sig == 53)
 		ifpressesc(data);
 	return (0);

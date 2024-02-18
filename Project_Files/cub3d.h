@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:55:06 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/12 03:40:59 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 01:34:52 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct s_data
 	void			*mlxwin;
 	int				charx;
 	int				chary;
+	int				charvisionangle;
 }	t_data;
 
 void			errormessage(char *message, int errornumber);
@@ -70,9 +71,7 @@ void			ifpressw(t_data *data);
 void			ifpressa(t_data *data);
 void			ifpresss(t_data *data);
 void			ifpressd(t_data *data);
-void			ifpresskeyup(t_data *data);
 void			ifpresskeyleft(t_data *data);
-void			ifpresskeydown(t_data *data);
 void			ifpresskeyright(t_data *data);
 unsigned int	getcolortohex(int *oldcolor);
 void			putfloorandceiling(t_data *data);

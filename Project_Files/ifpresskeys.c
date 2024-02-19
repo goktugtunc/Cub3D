@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:44:17 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/19 01:48:25 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 22:46:39 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ifpresskeyleft(t_data *data)
 		data->charvisionangle = 0;
 	else
 		data->charvisionangle += 6;
+	rayat(data);
 	printf("new angle: %d\n", data->charvisionangle);
 	// kafayı kafayı sola çevirir
 }
@@ -28,6 +29,7 @@ void	ifpresskeyright(t_data *data)
 		data->charvisionangle = 354;
 	else
 		data->charvisionangle -= 6;
+	rayat(data);
 	printf("new angle: %d\n", data->charvisionangle);
 	// kafayı sağa çevirir
 }

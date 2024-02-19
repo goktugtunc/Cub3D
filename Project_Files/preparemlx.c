@@ -6,18 +6,38 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 01:50:00 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/19 01:26:25 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 22:49:43 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	rayat(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = data->charx;
+	j = data->chary;
+	printf("i = %d, j = %d\n", i, j);
+	while (1)
+	{
+		i = (i - (4 * sin(data->charvisionangle * M_PI / 180)));
+		j = (j + (4 * cos(data->charvisionangle * M_PI / 180)));
+		printf("NEW i = %d, j = %d\n", i, j);
+		if (data->map[i / 64][j / 64] != '1')
+			mlx_pixel_put(data->mlx, data->mlxwin, j, i, data->fcolor);
+		else
+			break ;
+	}
+}
 
 void	haritakoy(t_data *data)
 {
 	void	*one;
 	void	*zero;
 	void	*character;
-	int x = 64;
+	int	x = 64;
 	int	i = 0;
 	int	j = 0;
 
@@ -76,7 +96,6 @@ void	preparemlx(t_data *data)
 	// data->fandcimageptr = mlx_new_image(data->mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
 	// data->fandcimage = mlx_get_data_addr(data->fandcimageptr, 32, 64, 1);
 	// putfloorandceiling(data);
-	write(1, "1", 1);
 	// mlx_put_image_to_window(data->mlx, data->mlxwin, data->fandcimage, 0, 0);
 	haritakoy(data);
 	mlx_hook(data->mlxwin, 2, 0, ifpressfuncs, data);

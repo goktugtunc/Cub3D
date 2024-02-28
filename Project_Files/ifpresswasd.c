@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:41:50 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/19 02:07:00 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/28 20:53:01 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,6 @@ void	ifpressw(t_data *data)
 		printf("charx: %d, chary: %d\n", data->charx, data->chary);
 	}
 	mlx_pixel_put(data->mlx, data->mlxwin, data->chary, data->charx, data->ccolor);
-	// ileri gidecek
 }
 
 void	ifpressa(t_data *data)
@@ -51,7 +50,6 @@ void	ifpressa(t_data *data)
 		data->chary -= 4;
 		printf("charx: %d, chary: %d\n", data->charx, data->chary);
 	}
-	// sola gidecek
 }
 
 void	ifpresss(t_data *data)
@@ -67,7 +65,6 @@ void	ifpresss(t_data *data)
 		data->charx += 4;
 		printf("charx: %d, chary: %d\n", data->charx, data->chary);
 	}
-	// geri gidecek
 }
 
 void	ifpressd(t_data *data)
@@ -83,5 +80,4 @@ void	ifpressd(t_data *data)
 		data->chary += 4;
 		printf("charx: %d, chary: %d\n", data->charx, data->chary);
 	}
-	// sağa gidecek
 }

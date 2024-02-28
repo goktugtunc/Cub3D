@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/03 21:55:06 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/19 22:46:00 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 23:40:58 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ void			ifpresskeyright(t_data *data);
 unsigned int	getcolortohex(int *oldcolor);
 void			putfloorandceiling(t_data *data);
 void			rayat(t_data *data);
+void			getcharvisionangle(t_data *data);
 
 #endif

@@ -6,11 +6,40 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 11:11:28 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/19 01:34:40 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 23:40:04 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
+
+void	getcharvisionangle(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	j = 0;
+	while (data->map[i])
+	{
+		while (data->map[i][j])
+		{
+			if (data->map[i][j] == 'E')
+				data->charvisionangle = 0;
+			else if (data->map[i][j] == 'N')
+				data->charvisionangle = 90;
+			else if (data->map[i][j] == 'W')
+				data->charvisionangle = 180;
+			else if (data->map[i][j] == 'S')
+				data->charvisionangle = 270;
+			if (data->map[i][j] == 'W' || data->map[i][j] == 'S'
+				|| data->map[i][j] == 'E' || data->map[i][j] == 'N')
+				return ;
+			j++;
+		}
+		j = 0;
+		i++;
+	}
+}
 
 int	ifpressesc(t_data *data)
 {

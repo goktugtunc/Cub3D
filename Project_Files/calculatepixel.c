@@ -6,24 +6,13 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 15:29:15 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/12 03:37:40 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/19 23:40:20 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
 
-// char	*converthex(int colorcode, int a)
-// {
-// 	char	*retval;
-
-// 	retval = malloc(sizeof(char) * 3);
-// 	retval[0] = "0123456789ABCDEF"[colorcode / 16];
-// 	retval[1] = "0123456789ABCDEF"[colorcode % 16];
-// 	retval[2] = '\0';
-// 	return (retval);
-// }
-
-int 	converthex(int colorcode, int a)
+int	converthex(int colorcode, int a)
 {
 	int	ret1;
 	int	ret2;
@@ -51,33 +40,13 @@ unsigned int	getcolortohex(int *oldcolor)
 	return (result);
 }
 
-void	putfloorandceiling(t_data *data)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < WINDOW_HEIGHT / 2)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-		{
-			((int *)data->fandcimage)[j + (i * WINDOW_WIDTH)] = data->fcolor;
-			j++;
-		}
-		i++;
-	}
-	while (i < WINDOW_HEIGHT)
-	{
-		j = 0;
-		while (j < WINDOW_WIDTH)
-		{
-			((int *)data->fandcimage)[j + (i * WINDOW_WIDTH)] = data->fcolor;
-			j++;
-		}
-		i++;
-	}
-}
+// void	createnewimages(t_data *data)
+// {
+// 	int	sizeline = WINDOW_WIDTH * 4;
+// 	int	bpp = 32;
+// 	data->fandcimageptr = mlx_new_image(data->mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
+// 	data->fandcimage = mlx_get_data_addr(data->fandcimageptr, &bpp, &sizeline, )
+// }
 
 void	calculatepixel(t_data *data)
 {

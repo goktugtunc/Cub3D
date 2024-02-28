@@ -6,7 +6,7 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 01:50:00 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/19 22:49:43 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/02/28 21:34:30 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,24 @@
 
 void	rayat(t_data *data)
 {
-	int	i;
-	int	j;
+	float	i;
+	float	j;
 
-	i = data->charx;
-	j = data->chary;
-	printf("i = %d, j = %d\n", i, j);
+	i = (float)data->charx;
+	j = (float)data->chary;
+	printf("i = %f, j = %f\n", i, j);
 	while (1)
 	{
-		i = (i - (4 * sin(data->charvisionangle * M_PI / 180)));
-		j = (j + (4 * cos(data->charvisionangle * M_PI / 180)));
-		printf("NEW i = %d, j = %d\n", i, j);
-		if (data->map[i / 64][j / 64] != '1')
+		i = (i - (2 * sin(data->charvisionangle * M_PI / 180)));
+		j = (j + (2 * cos(data->charvisionangle * M_PI / 180)));
+		if (data->map[(int)i / 64][(int)j / 64] != '1')
 			mlx_pixel_put(data->mlx, data->mlxwin, j, i, data->fcolor);
 		else
 			break ;
 	}
+	printf("normal koordinat: x = %f, y = %f\n", i, j);
+	printf("Duvar koordinat: x = %f, y = %f\n", i / 64, j / 64);
+	printf("Aradaki mesafe: %f\n", data->charx / 64 - (i / 64));
 }
 
 void	haritakoy(t_data *data)
@@ -92,7 +94,7 @@ void	preparemlx(t_data *data)
 	getmlxarguments(data);
 	mlx_pixel_put(data->mlx, data->mlxwin, 128, 64, data->fcolor);
 	mlx_pixel_put(data->mlx, data->mlxwin, 64, 64, data->ccolor);
-	data->charvisionangle = 90;
+	getcharvisionangle(data);
 	// data->fandcimageptr = mlx_new_image(data->mlx, WINDOW_HEIGHT, WINDOW_WIDTH);
 	// data->fandcimage = mlx_get_data_addr(data->fandcimageptr, 32, 64, 1);
 	// putfloorandceiling(data);

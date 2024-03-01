@@ -6,33 +6,11 @@
 /*   By: gotunc <gotunc@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/07 01:50:00 by gotunc            #+#    #+#             */
-/*   Updated: 2024/02/28 21:34:30 by gotunc           ###   ########.fr       */
+/*   Updated: 2024/03/01 01:31:05 by gotunc           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cub3d.h"
-
-void	rayat(t_data *data)
-{
-	float	i;
-	float	j;
-
-	i = (float)data->charx;
-	j = (float)data->chary;
-	printf("i = %f, j = %f\n", i, j);
-	while (1)
-	{
-		i = (i - (2 * sin(data->charvisionangle * M_PI / 180)));
-		j = (j + (2 * cos(data->charvisionangle * M_PI / 180)));
-		if (data->map[(int)i / 64][(int)j / 64] != '1')
-			mlx_pixel_put(data->mlx, data->mlxwin, j, i, data->fcolor);
-		else
-			break ;
-	}
-	printf("normal koordinat: x = %f, y = %f\n", i, j);
-	printf("Duvar koordinat: x = %f, y = %f\n", i / 64, j / 64);
-	printf("Aradaki mesafe: %f\n", data->charx / 64 - (i / 64));
-}
 
 void	haritakoy(t_data *data)
 {

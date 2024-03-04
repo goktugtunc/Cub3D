@@ -1,22 +1,29 @@
 NAME = cub3D
 
-COMPILE = gcc -Wall -Werror -Wextra -framework OpenGL -framework AppKit
+CC = gcc
 
-SOURCES = main.c filecontrol.c utils.c mapcontroller.c generalcontroller.c errorcontrol.c libft/libft.a get_next_line/get_next_line_bonus.c get_next_line/get_next_line_utils_bonus.c preparemlx.c mlx/libmlx.a ifpressescandgeneral.c ifpresswasd.c ifpresskeys.c calculatepixel.c ray.c
+CFLAGS = -Wall -Wextra -Werror
+
+MLX = mlx
+
+LXFLAGS = -lmlx -framework OpenGL -framework AppKit
+
+SRC = cub3d.c parse/parse.c parse/parse_map.c parse/parse_tools.c parse/parse_check.c gnl.c key.c screen.c screen_col.c tools.c parse/parse_helper.c libft/libft.a
+
+OBJ = cub3d.o parse/parse.o parse/parse_map.o parse/parse_tools.o parse/parse_check.o gnl.o key.o screen.o screen_col.o parse/parse_helper.o tools.o
 
 all: $(NAME)
 
 $(NAME):
-	make -C libft/
-	make -C mlx/
-	$(COMPILE) $(SOURCES) -o $(NAME)
+	make -C libft
+	$(CC) -o $(NAME) -L $(MLX) $(LXFLAGS) $(SRC)
 
 clean:
-	make clean -C libft/
-	make clean -C mlx/
+	make clean -C libft
+	rm -rf $(OBJ)
 
 fclean: clean
-	make fclean -C libft/
-	rm -rf $(NAME)
+	make fclean -C libft
+	@rm -f $(NAME)
 
 re: fclean all
